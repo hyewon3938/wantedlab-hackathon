@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { data } from "../../common/constant/data";
 
 import zzal from "../../image/jobMbti/zzal.jpeg";
 
@@ -8,30 +9,39 @@ import MobileViewWrap from "../style/Wrap/MobileViewWrap";
 
 const Question = () => {
   const history = useHistory();
-  const resultClickHandler = () => {
-    // window.location.pathname = "/result";
-    history.push("/result");
+
+  const [currentIndex, setCurrentIndex] = useState(1);
+
+  const answerClickHandler = () => {
+    if (currentIndex + 1 === data.questions.length)
+      return history.push("/result");
+    setCurrentIndex((prev) => prev + 1);
   };
+
+  console.log(currentIndex);
+  console.log(data.questions.length);
+
   return (
     <MobileViewWrap>
       <Wrap>
         <ProgressWrap>
-          <span>5/12</span>
+          <span>
+            {currentIndex} / {data.questions.length}
+          </span>
           <ProgressBarWrap>
-            <ProgressBar />
+            <ProgressBar rate={(currentIndex / data.questions.length) * 100} />
           </ProgressBarWrap>
         </ProgressWrap>
         <QuestionImage>
-          <img src={zzal} />
+          <img src={data.questions[currentIndex].image} />
         </QuestionImage>
-        <QuestionWrap>
-          아침에 출근하니 옆 자리 팀원이 피곤해보인다. 왜 이렇게 피곤하냐고
-          물으니 “늦게 잤어, 어제 생각할 게 너무 많아서.. ”라고 대답한 팀원.
-          이럴 때 나는?
-        </QuestionWrap>
+        <QuestionWrap>{data.questions[currentIndex].content}</QuestionWrap>
         <AnswerWrap>
-          <Answer onClick={resultClickHandler}>무슨 생각했는데 ?</Answer>
-          <Answer>요새 고민 있어 ?</Answer>
+          {data.questions[currentIndex].selectList.map((item, index) => (
+            <Answer index={`anser-key-${index}`} onClick={answerClickHandler}>
+              {item.content}
+            </Answer>
+          ))}
         </AnswerWrap>
       </Wrap>
     </MobileViewWrap>
@@ -76,7 +86,7 @@ const ProgressBar = styled.div`
   top: 0;
   left: 0;
   border-radius: 10px;
-  width: 30%;
+  width: ${({ rate }) => rate + "%"};
   height: 100%;
   background: ${({ theme }) => theme.color.wantedLightBlue};
 `;
@@ -119,5 +129,7 @@ const Answer = styled.li`
   font-weight: bold;
   border-radius: 8px;
   font-size: 15px;
+  line-height: 20px;
+  white-space: pre-line;
   cursor: pointer;
 `;
