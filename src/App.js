@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import GlobalStyleProvider from "./components/style/GlobalStyleProvider";
 import Main from "./components/Main/Main";
@@ -10,7 +10,7 @@ import Result from "./components/Survey/Result";
 const App = () => {
   return (
     <GlobalStyleProvider>
-      <Router>
+      <Router basename="https://hyewon3909.github.io/test-survey-generator">
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/survey" component={SurveyMain} />
