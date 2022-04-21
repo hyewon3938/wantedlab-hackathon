@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Main = () => {
   const startTest = () => {
-    window.location.pathname = "/survey";
+    window.location.pathname = "/test-survey-generator/survey";
   };
 
   return (
