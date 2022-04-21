@@ -36,6 +36,19 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 
+@font-face {
+    font-family: 'ONE-Mobile-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 `;
 
 const GlobalStyleProvider = ({ children }) => {

@@ -8,4 +8,10 @@ const fontSize = {
   title: "32px",
 };
 
-export default { fontSize };
+const color = {
+  wantedLightBlue: "#248BFE",
+  wantedBlue: "#1F58FB",
+  wantedMint: "#05E5BB",
+};
+
+export default { fontSize, color };
