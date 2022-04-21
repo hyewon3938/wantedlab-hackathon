@@ -3,33 +3,58 @@ import styled, { keyframes } from "styled-components";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { data } from "../../common/constant/data";
 
-import zzal from "../../image/jobMbti/zzal.jpeg";
-
 import MobileViewWrap from "../style/Wrap/MobileViewWrap";
 
 const Question = () => {
   const history = useHistory();
 
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedType, setSelectedType] = useState([]);
 
-  const answerClickHandler = () => {
-    if (currentIndex + 1 === data.questions.length)
-      return history.push("/result");
-    setCurrentIndex((prev) => prev + 1);
+  const resultList = data.results.map((item) => item.type);
+
+  const getMode = (array) => {
+    // 1. 출연 빈도 구하기
+    const counts = array.reduce((pv, cv) => {
+      pv[cv] = (pv[cv] || 0) + 1;
+      return pv;
+    }, {});
+    // 2. 최빈값 구하기
+    const keys = Object.keys(counts);
+    let mode = keys[0];
+    keys.forEach((val, idx) => {
+      if (counts[val] > counts[mode]) {
+        mode = val;
+      }
+    });
+    return mode;
   };
 
-  console.log(currentIndex);
-  console.log(data.questions.length);
+  const answerClickHandler = (type) => {
+    resultList.forEach((item) => {
+      if (item.includes(type)) selectedType.push(item);
+    });
+    setSelectedType(selectedType);
+
+    if (currentIndex === data.questions.length - 1) {
+      const result = getMode(selectedType);
+      window.localStorage.setItem("result", result);
+      return history.push("/result");
+    }
+    setCurrentIndex((prev) => prev + 1);
+  };
 
   return (
     <MobileViewWrap>
       <Wrap>
         <ProgressWrap>
           <span>
-            {currentIndex} / {data.questions.length}
+            {currentIndex + 1} / {data.questions.length}
           </span>
           <ProgressBarWrap>
-            <ProgressBar rate={(currentIndex / data.questions.length) * 100}>
+            <ProgressBar
+              rate={((currentIndex + 1) / data.questions.length) * 100}
+            >
               <Progress className="grow-animation" />
             </ProgressBar>
           </ProgressBarWrap>
@@ -40,7 +65,11 @@ const Question = () => {
         <QuestionWrap>{data.questions[currentIndex].content}</QuestionWrap>
         <AnswerWrap>
           {data.questions[currentIndex].selectList.map((item, index) => (
-            <Answer index={`anser-key-${index}`} onClick={answerClickHandler}>
+            <Answer
+              key={"answer-" + index}
+              index={`anser-key-${index}`}
+              onClick={() => answerClickHandler(item.type)}
+            >
               {item.content}
             </Answer>
           ))}

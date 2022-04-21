@@ -6,7 +6,6 @@ const Main = () => {
   const history = useHistory();
 
   const startTest = () => {
-    // window.location.pathname = "/test-survey-generator/survey";
     history.push("/survey");
   };
 

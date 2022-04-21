@@ -1,44 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import { data } from "../../common/constant/data";
 
-import ESTP from "../../image/jobMbti/result/ESTP.png";
 import wantedTextLogo from "../../image/logo/wanted-text-logo.png";
 
 import MobileViewWrap from "../style/Wrap/MobileViewWrap";
 
 const Result = () => {
+  const history = useHistory();
+  const [resultObject, setResultObject] = useState();
+
+  useEffect(() => {
+    const resultValue = window.localStorage.getItem("result");
+    console.log(resultValue);
+    setResultObject(data.results.find((item) => item.type === resultValue));
+  }, []);
+
   const openLink = (link) => {
     window.open(link);
   };
 
-  const data1 = data.results[2];
   return (
     <MobileViewWrap background={"#e3eeff"}>
-      <Wrap>
-        <ResultImage>
-          <img src={data1.image} />
-        </ResultImage>
-        <ResultTitle>{data1.title}</ResultTitle>
-        <ResulInfoList>
-          {data1.resultItems.map((result) => (
-            <ResultInfo>- {result}</ResultInfo>
-          ))}
-        </ResulInfoList>
-        <ResultLinkTitle>{data1.title}에게 어울리는 직무는?</ResultLinkTitle>
-        <ResultLinkButtonWrap>
-          {data1.linkList.map((item, index) => (
-            <LinkButton index={index} onClick={() => openLink(item.link)}>
-              ???
-              {/* {item.content} */}
-            </LinkButton>
-          ))}
-        </ResultLinkButtonWrap>
-        <WantedLogo>
-          <img src={wantedTextLogo} />
-        </WantedLogo>
-      </Wrap>
+      {resultObject && (
+        <Wrap>
+          <ResultImage>
+            <img src={resultObject.image} />
+          </ResultImage>
+          <ResultTitle>{resultObject.title}</ResultTitle>
+          <ResulInfoList>
+            {resultObject.resultItems.map((result) => (
+              <ResultInfo>- {result}</ResultInfo>
+            ))}
+          </ResulInfoList>
+          <ResultLinkTitle>
+            {resultObject.title}에게 어울리는 직무는?
+          </ResultLinkTitle>
+          <ResultLinkButtonWrap>
+            {resultObject.linkList.map((item, index) => (
+              <LinkButton index={index} onClick={() => openLink(item.link)}>
+                ???
+                {/* {item.content} */}
+              </LinkButton>
+            ))}
+          </ResultLinkButtonWrap>
+          <WantedLogo>
+            <img src={wantedTextLogo} />
+          </WantedLogo>
+        </Wrap>
+      )}
     </MobileViewWrap>
   );
 };
