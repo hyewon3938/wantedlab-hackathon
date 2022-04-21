@@ -10,7 +10,7 @@ import Result from "./components/Survey/Result";
 const App = () => {
   return (
     <GlobalStyleProvider>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router basename={"test-survey-generator"}>
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/survey" component={SurveyMain} />
