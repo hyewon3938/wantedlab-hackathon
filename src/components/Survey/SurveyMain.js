@@ -19,7 +19,7 @@ const SurveyMain = () => {
   }, []);
 
   const startClickHandler = () => {
-    window.location.pathname = "/question";
+    window.location.pathname = "/test-survey-generator/question";
   };
 
   return (

@@ -7,7 +7,7 @@ import MobileViewWrap from "../style/Wrap/MobileViewWrap";
 
 const Question = () => {
   const resultClickHandler = () => {
-    window.location.pathname = "/result";
+    window.location.pathname = "/test-survey-generator/result";
   };
   return (
     <MobileViewWrap>
