@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { data } from "../../common/constant/data";
 
@@ -29,7 +29,9 @@ const Question = () => {
             {currentIndex} / {data.questions.length}
           </span>
           <ProgressBarWrap>
-            <ProgressBar rate={(currentIndex / data.questions.length) * 100} />
+            <ProgressBar rate={(currentIndex / data.questions.length) * 100}>
+              <Progress className="grow-animation" />
+            </ProgressBar>
           </ProgressBarWrap>
         </ProgressWrap>
         <QuestionImage>
@@ -50,6 +52,15 @@ const Question = () => {
 
 export default Question;
 
+const grow = keyframes`
+  from {
+    width : 0;
+  }
+  to{
+    opacity : 100%;
+  }
+`;
+
 const Wrap = styled.div`
   width: inherit;
   height: inherit;
@@ -58,6 +69,10 @@ const Wrap = styled.div`
   justify-content: center;
   align-items: center;
   font-family: Pretendard-Regular;
+
+  .grow-animation {
+    animation: ${grow} 1s ease-in-out;
+  }
 `;
 
 const ProgressWrap = styled.div`
@@ -88,7 +103,14 @@ const ProgressBar = styled.div`
   border-radius: 10px;
   width: ${({ rate }) => rate + "%"};
   height: 100%;
+  /* background: ${({ theme }) => theme.color.wantedLightBlue}; */
+`;
+const Progress = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
   background: ${({ theme }) => theme.color.wantedLightBlue};
+  transition: 3s;
 `;
 
 const QuestionImage = styled.div`

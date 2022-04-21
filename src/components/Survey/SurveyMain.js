@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 //image
 import wantedLogo from "../../image/logo/wanted-logo.jpeg";
@@ -89,7 +89,6 @@ const MainImage = styled.div`
   height: center;
   width: 260px;
   height: 260px;
-  /* border-radius: 0 0 50% 50%; */
   border-radius: 50%;
   background: #fff;
   overflow: hidden;

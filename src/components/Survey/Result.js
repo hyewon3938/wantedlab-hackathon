@@ -1,61 +1,37 @@
 import React from "react";
 import styled from "styled-components";
 
+import { data } from "../../common/constant/data";
+
 import ESTP from "../../image/jobMbti/result/ESTP.png";
 import wantedTextLogo from "../../image/logo/wanted-text-logo.png";
 
 import MobileViewWrap from "../style/Wrap/MobileViewWrap";
 
 const Result = () => {
-  const data = {
-    resultType: "리트리버",
-    title: "온화한 리트리버 !",
-    image: ESTP,
-    resultList: [
-      "힘든 일이 있어도 혼자 끙끙 앓는 타입이에요.",
-      "누군가 나를 힘들게 해도 끝까지 참아요.",
-      "회사 사람들과 사적으로도 친밀하게 지내요.",
-      "다른 사람의 이야기를 들어주는 것을 좋아해요.",
-      "공감능력이 너무 높아서 가끔 본인이 힘들어질 때가 있어요.",
-      "옳은 일을 하고 싶어해요.",
-      "사람들 간의 갈등과 긴장이 없는 환경에서 할 수 있는 일이 좋아요.",
-    ],
-    resultLinkList: [
-      {
-        text: "???",
-        link: "https://www.wanted.co.kr/wdlist/509?country=kr&job_sort=company.response_rate_order&years=-1&locations=all",
-      },
-      {
-        text: "???",
-        link: "https://www.wanted.co.kr/wdlist/507?country=kr&job_sort=company.response_rate_order&years=-1&locations=all",
-      },
-      {
-        text: "???",
-        link: "https://www.wanted.co.kr/wdlist/518/671?country=kr&job_sort=company.response_rate_order&years=-1&locations=all",
-      },
-    ],
-  };
-
   const openLink = (link) => {
     window.open(link);
   };
+
+  const data1 = data.results[2];
   return (
     <MobileViewWrap background={"#e3eeff"}>
       <Wrap>
         <ResultImage>
-          <img src={data.image} />
+          <img src={data1.image} />
         </ResultImage>
-        <ResultTitle>{data.title}</ResultTitle>
+        <ResultTitle>{data1.title}</ResultTitle>
         <ResulInfoList>
-          {data.resultList.map((result) => (
+          {data1.resultItems.map((result) => (
             <ResultInfo>- {result}</ResultInfo>
           ))}
         </ResulInfoList>
-        <ResultLinkTitle>{data.resultType}과 어울리는 직무는?</ResultLinkTitle>
+        <ResultLinkTitle>{data1.title}에게 어울리는 직무는?</ResultLinkTitle>
         <ResultLinkButtonWrap>
-          {data.resultLinkList.map((item, index) => (
+          {data1.linkList.map((item, index) => (
             <LinkButton index={index} onClick={() => openLink(item.link)}>
-              {item.text}
+              ???
+              {/* {item.content} */}
             </LinkButton>
           ))}
         </ResultLinkButtonWrap>
@@ -90,6 +66,10 @@ const ResultTitle = styled.h1`
   font-family: ONE-Mobile-Title;
   font-size: 25px;
   margin: 25px 0 0 0;
+  line-height: 30px;
+  text-align: center;
+  width: 80%;
+  word-break: break-all;
 `;
 
 const ResulInfoList = styled.ul`
@@ -109,6 +89,10 @@ const ResultInfo = styled.li`
 const ResultLinkTitle = styled.h1`
   font-family: ONE-Mobile-Title;
   font-size: 18px;
+  width: 70%;
+  word-break: break-all;
+  line-height: 25px;
+  text-align: center;
 `;
 
 const ResultLinkButtonWrap = styled.div`
