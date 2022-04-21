@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import ESTP from "../../image/jobMbti/ESTP.png";
+import ESTP from "../../image/jobMbti/result/ESTP.png";
 import wantedTextLogo from "../../image/logo/wanted-text-logo.png";
 
 import MobileViewWrap from "../style/Wrap/MobileViewWrap";
