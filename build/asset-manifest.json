@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/test-survey-generator/static/css/main.e6c13ad2.css",
+    "main.js": "/test-survey-generator/static/js/main.d22765f9.js",
+    "static/js/787.b55979ee.chunk.js": "/test-survey-generator/static/js/787.b55979ee.chunk.js",
+    "static/media/jobMBTImain.png": "/test-survey-generator/static/media/jobMBTImain.056d1b2e9a09aa5fce7b.png",
+    "static/media/ESTP.png": "/test-survey-generator/static/media/ESTP.8885f48fbe170faf030f.png",
+    "static/media/zzal.jpeg": "/test-survey-generator/static/media/zzal.a45419e777529ad9995e.jpeg",
+    "static/media/wanted-text-logo.png": "/test-survey-generator/static/media/wanted-text-logo.33f94ba6e410d92d4396.png",
+    "static/media/wanted-logo.jpeg": "/test-survey-generator/static/media/wanted-logo.ca7191b981c136205521.jpeg",
+    "index.html": "/test-survey-generator/index.html",
+    "main.e6c13ad2.css.map": "/test-survey-generator/static/css/main.e6c13ad2.css.map",
+    "main.d22765f9.js.map": "/test-survey-generator/static/js/main.d22765f9.js.map",
+    "787.b55979ee.chunk.js.map": "/test-survey-generator/static/js/787.b55979ee.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.d22765f9.js"
+  ]
+}
