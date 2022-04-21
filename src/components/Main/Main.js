@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Main = () => {
+  const history = useHistory();
+
   const startTest = () => {
-    window.location.pathname = "/test-survey-generator/survey";
+    // window.location.pathname = "/test-survey-generator/survey";
+    history.push("/survey");
   };
 
   return (

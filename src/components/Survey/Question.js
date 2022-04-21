@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import zzal from "../../image/jobMbti/zzal.jpeg";
 
 import MobileViewWrap from "../style/Wrap/MobileViewWrap";
 
 const Question = () => {
+  const history = useHistory();
   const resultClickHandler = () => {
-    window.location.pathname = "/test-survey-generator/result";
+    // window.location.pathname = "/result";
+    history.push("/result");
   };
   return (
     <MobileViewWrap>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 //image
 import wantedLogo from "../../image/logo/wanted-logo.jpeg";
 import jobMBTImain from "../../image/jobMbti/jobMBTImain.png";
@@ -8,6 +8,7 @@ import jobMBTImain from "../../image/jobMbti/jobMBTImain.png";
 import MobileViewWrap from "../style/Wrap/MobileViewWrap";
 
 const SurveyMain = () => {
+  const history = useHistory();
   const [userLogo, setUserLogo] = useState();
   const [titleText, setTitleText] = useState();
   const [mainImage, setMainImage] = useState();
@@ -19,7 +20,8 @@ const SurveyMain = () => {
   }, []);
 
   const startClickHandler = () => {
-    window.location.pathname = "/test-survey-generator/question";
+    // window.location.pathname = "/question";
+    history.push("/question");
   };
 
   return (
