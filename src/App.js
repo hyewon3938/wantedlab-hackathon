@@ -1,8 +1,20 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import Main from "./components/Main/Main";
+import GlobalStyleProvider from "./components/style/GlobalStyleProvider";
 
-function App() {
-  return <div className="App">보일러 플레이팅</div>;
-}
+const App = () => {
+  return (
+    <GlobalStyleProvider>
+      <Router>
+        <main>
+          <Switch>
+            <Route exact path="/" component={Main} />
+          </Switch>
+        </main>
+      </Router>
+    </GlobalStyleProvider>
+  );
+};
 
 export default App;
