@@ -81,9 +81,7 @@ const Result = () => {
           </ResultLinkButtonWrap>
 
           <ResultLinkTitle>
-            {resultObject.title}
-            의 성향을 살려
-            <br /> 이력서를 채워볼까요?
+            {resultObject.title}의 성향을 살려 이력서를 채워볼까요?
           </ResultLinkTitle>
           <ResultLinkButtonWrap>
             <LinkButton
@@ -159,6 +157,7 @@ const ResultLinkTitle = styled.h1`
   line-height: 25px;
   text-align: center;
   margin: 30px 0 0 0;
+  word-break: keep-all;
 `;
 
 const ResultLinkButtonWrap = styled.div`
