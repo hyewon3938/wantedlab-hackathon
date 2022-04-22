@@ -11,6 +11,7 @@ const Main = () => {
 
   return (
     <Wrap>
+      <TestTitle>직장인 직무 성향 테스트</TestTitle>
       <TestStartButton onClick={startTest}>테스트 시작하기</TestStartButton>
     </Wrap>
   );
@@ -29,10 +30,17 @@ const Wrap = styled.div`
   }
 `;
 
+const TestTitle = styled.h1`
+  margin: 10px 0 10px 0;
+  font-family: ONE-Mobile-Title;
+  font-size: 18px;
+`;
+
 const TestStartButton = styled.button`
   padding: 15px 20px;
   border-radius: 5px;
   background: ${({ theme }) => theme.color.wantedBlue};
   color: #fff;
   cursor: pointer;
+  margin: 0 0 10px 0;
 `;

@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 
-import { data } from "../../common/constant/data";
+import { data, matchMBTIResult } from "../../common/constant/data";
 
 import wantedTextLogo from "../../image/logo/wanted-text-logo.png";
-
 import MobileViewWrap from "../style/Wrap/MobileViewWrap";
 
 const Result = () => {
   const history = useHistory();
+  const params = useParams();
+
   const [resultObject, setResultObject] = useState();
 
   useEffect(() => {
-    const resultValue = window.localStorage.getItem("result");
-    console.log(resultValue);
-    setResultObject(data.results.find((item) => item.type === resultValue));
+    const urlMatch = Object.keys(matchMBTIResult);
+    const resultType = urlMatch.find((item) => {
+      return matchMBTIResult[item] === params.id;
+    });
+
+    setResultObject(data.results.find((item) => item.type === resultType));
   }, []);
 
   const openLink = (link) => {
@@ -31,21 +38,71 @@ const Result = () => {
           </ResultImage>
           <ResultTitle>{resultObject.title}</ResultTitle>
           <ResulInfoList>
-            {resultObject.resultItems.map((result) => (
-              <ResultInfo>- {result}</ResultInfo>
+            {resultObject.resultItems.map((result, index) => (
+              <ResultInfo key={index}>- {result}</ResultInfo>
             ))}
           </ResulInfoList>
           <ResultLinkTitle>
-            {resultObject.title}에게 어울리는 직무는?
+            {resultObject.title}
+            에게 <br /> 어울리는 직무는?
           </ResultLinkTitle>
           <ResultLinkButtonWrap>
             {resultObject.linkList.map((item, index) => (
-              <LinkButton index={index} onClick={() => openLink(item.link)}>
+              <LinkButton
+                key={index}
+                index={index}
+                onClick={() => openLink(item.link)}
+              >
                 ???
                 {/* {item.content} */}
               </LinkButton>
             ))}
           </ResultLinkButtonWrap>
+
+          <ResultLinkTitle>
+            {resultObject.title}
+            에게 <br /> 어울리는 직무의 연봉은?
+          </ResultLinkTitle>
+          <ResultLinkButtonWrap>
+            {resultObject.linkList.map((item, index) => (
+              <LinkButton
+                key={index}
+                index={index}
+                onClick={() => openLink("https://www.wanted.co.kr/salary/518")}
+              >
+                직무 {index + 1}의 연봉 정보 확인
+                {/* {item.content} */}
+              </LinkButton>
+            ))}
+          </ResultLinkButtonWrap>
+
+          <ResultLinkTitle>
+            {resultObject.title}
+            의 성향을 살려
+            <br /> 이력서를 채워볼까요?
+          </ResultLinkTitle>
+          <ResultLinkButtonWrap>
+            <LinkButton
+              onClick={() => openLink("https://www.wanted.co.kr/cv/list")}
+            >
+              이력서 작성하기
+            </LinkButton>
+          </ResultLinkButtonWrap>
+          <ShareMessage>결과 내용 공유하기</ShareMessage>
+          <ShareButtonWrap>
+            <ShareButton
+              onClick={() =>
+                document.execCommand(
+                  `https://hyewon3909.github.io/test-survey-generator/result/${params.id}`
+                )
+              }
+            >
+              링크 복사
+            </ShareButton>
+            <ShareButton>키톡 공유</ShareButton>
+          </ShareButtonWrap>
+
+          <button>테스트로 돌아가기</button>
           <WantedLogo>
             <img src={wantedTextLogo} />
           </WantedLogo>
@@ -81,7 +138,6 @@ const ResultTitle = styled.h1`
   line-height: 30px;
   text-align: center;
   width: 80%;
-  word-break: break-all;
 `;
 
 const ResulInfoList = styled.ul`
@@ -102,9 +158,9 @@ const ResultLinkTitle = styled.h1`
   font-family: ONE-Mobile-Title;
   font-size: 18px;
   width: 70%;
-  word-break: break-all;
   line-height: 25px;
   text-align: center;
+  margin: 30px 0 0 0;
 `;
 
 const ResultLinkButtonWrap = styled.div`
@@ -125,7 +181,7 @@ const LinkButton = styled.button`
   justify-content: center;
   align-items: center;
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   cursor: pointer;
   background: ${({ theme, index }) => {
@@ -133,6 +189,28 @@ const LinkButton = styled.button`
     if (index === 1) return theme.color.wantedLightBlue;
     return theme.color.wantedBlue;
   }};
+`;
+
+const ShareButtonWrap = styled.div`
+  display: flex;
+  margin: 30px 0 0 0;
+  gap: 15px;
+`;
+
+const ShareButton = styled.button`
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: lightgray;
+`;
+
+const ShareMessage = styled.p`
+  text-align: center;
+  margin: 45px 0 0 0;
+  font-size: 18px;
 `;
 
 const WantedLogo = styled.div`

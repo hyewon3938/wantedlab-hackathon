@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { data } from "../../common/constant/data";
+import { data, matchMBTIResult } from "../../common/constant/data";
 
 import MobileViewWrap from "../style/Wrap/MobileViewWrap";
 
@@ -38,8 +38,7 @@ const Question = () => {
 
     if (currentIndex === data.questions.length - 1) {
       const result = getMode(selectedType);
-      window.localStorage.setItem("result", result);
-      return history.push("/result");
+      return history.push(`/result/${matchMBTIResult[result]}`);
     }
     setCurrentIndex((prev) => prev + 1);
   };

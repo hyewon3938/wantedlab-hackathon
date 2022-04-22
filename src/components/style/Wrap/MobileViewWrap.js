@@ -25,6 +25,7 @@ const Wrap = styled.div`
 const MobileView = styled.div`
   width: 360px;
   height: 100%;
+  padding: 20px 0 0 0;
   /* border: solid 1px rgba(0, 0, 0, 0.1); */
   overflow-y: scroll;
   overflow-x: hidden;

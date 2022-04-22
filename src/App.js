@@ -15,7 +15,7 @@ const App = () => {
           <Route exact path="/" component={Main} />
           <Route path="/survey" component={SurveyMain} />
           <Route path="/question" component={Question} />
-          <Route path="/Result" component={Result} />
+          <Route path="/Result/:id" component={Result} />
         </Switch>
       </Router>
     </GlobalStyleProvider>

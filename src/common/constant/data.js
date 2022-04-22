@@ -239,7 +239,7 @@ export const data = {
     },
     {
       image: ENFP,
-      title: "넘사벽으로 좋은 성격의 푸들",
+      title: "넘사벽 좋은 성격의 푸들",
       type: "ENFP",
       resultItems: [
         "누군가 시비를 걸어도 웃음으로 대처해요.",
@@ -267,7 +267,7 @@ export const data = {
     },
     {
       image: ENTJ,
-      title: "겁이 없는 성격의 닥스훈트",
+      title: "겁 없는 닥스훈트",
       type: "ENTJ",
       resultItems: [
         "무슨 일이든 쉽게 겁먹는 편이 아니에요.",
@@ -295,7 +295,7 @@ export const data = {
     },
     {
       image: ESFJ,
-      title: "완벽한 성격의 웰시코기",
+      title: "완벽한 웰시코기",
       type: "ESFJ",
       resultItems: [
         "업무에 있어 적극적이고 호기심이 많아요. 업무가 주어지면 누구보다 완벽히 해내요.",
@@ -323,7 +323,7 @@ export const data = {
     },
     {
       image: ENTP,
-      title: "낙천적인 성격의 비글",
+      title: "낙천적인 비글",
       type: "ENTP",
       resultItems: [
         "뚝심이 있어요. 자신의 주장을 잘 굽히지 않는 편이에요.",
@@ -351,7 +351,7 @@ export const data = {
     },
     {
       image: ESFP,
-      title: "명랑한 성격의 비숑프리제",
+      title: "명랑한 비숑프리제",
       type: "ESFP",
       resultItems: [
         "팀에서 분위기메이커를 담당하고 있어요.",
@@ -407,7 +407,7 @@ export const data = {
     },
     {
       image: ESTP,
-      title: "예민한 성격의 포메라니안",
+      title: "예민한 포메라니안",
       type: "ESTP",
       resultItems: [
         "업무를 할 때 상당히 예민하고 날카로워요.",
@@ -435,7 +435,7 @@ export const data = {
     },
     {
       image: INFJ,
-      title: "나긋한 성격의 사모예드",
+      title: "나긋한 사모예드",
       type: "INFJ",
       resultItems: [
         "상사와 부하 가릴 것 없이 모두와 잘 지내요.",
@@ -463,7 +463,7 @@ export const data = {
     },
     {
       image: INFP,
-      title: "나른한 성격의 그레이하운드",
+      title: "나른한 그레이하운드",
       type: "INFP",
       resultItems: [
         "업무가 생기면 귀찮지만 누구보다 빠르게 끝마치려고 해요.",
@@ -492,7 +492,7 @@ export const data = {
     },
     {
       image: INTJ,
-      title: "논리적인 성격의 시베리안 허스키",
+      title: "논리적인 시베리안 허스키",
       type: "INTJ",
       resultItems: [
         "다른 사람에게 폐 끼치는 것을 극도로 싫어해요. 꼰대 상사를 싫어해요.",
@@ -520,7 +520,7 @@ export const data = {
     },
     {
       image: INTP,
-      title: "섬세한 성격의 도베르만",
+      title: "섬세한 도베르만",
       type: "INTP",
       resultItems: [
         "학습 능력이 굉장히 높은 편이에요.",
@@ -548,7 +548,7 @@ export const data = {
     },
     {
       image: ISFJ,
-      title: "대담한 성격의 차우차우",
+      title: "대담한 차우차우",
       type: "ISFJ",
       resultItems: [
         "속은 아주 예민하고 날카롭지만 겉으로 티내지 않아요.",
@@ -604,7 +604,7 @@ export const data = {
     },
     {
       image: ISTJ,
-      title: "독립적인 성격의 시바견",
+      title: "독립적인 시바견",
       type: "ISTJ",
       resultItems: [
         "굉장히 프로페셔널한 사람이에요.",
@@ -632,7 +632,7 @@ export const data = {
     },
     {
       image: ISTP,
-      title: "불같은 성격의 치와와",
+      title: "불같은 치와와",
       type: "ISTP",
       resultItems: [
         "하나에 몰두하면 끝을 보는 성격이에요.",
@@ -659,4 +659,23 @@ export const data = {
       ],
     },
   ],
+};
+
+export const matchMBTIResult = {
+  ENFJ: "gr",
+  ENFP: "pd",
+  ENTJ: "ds",
+  ENTP: "bg",
+  ESTP: "pr",
+  ESTJ: "bc",
+  ESFP: "bf",
+  ESFJ: "wc",
+  ISTJ: "si",
+  ISTP: "ch",
+  ISFP: "st",
+  ISFJ: "cc",
+  INFJ: "sy",
+  INFP: "gh",
+  INTJ: "sh",
+  INTP: "db",
 };

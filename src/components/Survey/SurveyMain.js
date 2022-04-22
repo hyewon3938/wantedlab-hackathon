@@ -15,7 +15,7 @@ const SurveyMain = () => {
 
   useEffect(() => {
     setUserLogo(wantedLogo);
-    setTitleText("직장인 댕댕이 테스트");
+    setTitleText("댕댕이 직무 성향 테스트");
     setMainImage(jobMBTImain);
   }, []);
 
@@ -37,6 +37,7 @@ const SurveyMain = () => {
         <MainImage>
           <img src={mainImage} />
         </MainImage>
+        <Count>1,102,500명이 참여했어요!</Count>
         <TestStartButton onClick={startClickHandler}>
           테스트 시작하기
         </TestStartButton>
@@ -96,6 +97,12 @@ const MainImage = styled.div`
   img {
     width: 90%;
   }
+`;
+
+const Count = styled.span`
+  font-size: 14px;
+  text-align: center;
+  margin: 35px 0 0 0;
 `;
 
 const TestStartButton = styled.button`
