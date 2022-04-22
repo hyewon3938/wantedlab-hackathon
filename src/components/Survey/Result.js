@@ -29,6 +29,10 @@ const Result = () => {
     window.open(link);
   };
 
+  const backToMainButtonHandler = () => {
+    history.push("/survey");
+  };
+
   return (
     <MobileViewWrap background={"#e3eeff"}>
       {resultObject && (
@@ -90,19 +94,13 @@ const Result = () => {
           </ResultLinkButtonWrap>
           <ShareMessage>결과 내용 공유하기</ShareMessage>
           <ShareButtonWrap>
-            <ShareButton
-              onClick={() =>
-                document.execCommand(
-                  `https://hyewon3909.github.io/test-survey-generator/result/${params.id}`
-                )
-              }
-            >
-              링크 복사
-            </ShareButton>
+            <ShareButton>링크 복사</ShareButton>
             <ShareButton>키톡 공유</ShareButton>
           </ShareButtonWrap>
 
-          <button>테스트로 돌아가기</button>
+          <GoBackTestButton onClick={backToMainButtonHandler}>
+            {"<<-  "} 테스트로 돌아가기
+          </GoBackTestButton>
           <WantedLogo>
             <img src={wantedTextLogo} />
           </WantedLogo>
@@ -221,4 +219,12 @@ const WantedLogo = styled.div`
   img {
     height: 15px;
   }
+`;
+
+const GoBackTestButton = styled.button`
+  margin: 35px 0 0 0;
+  font-family: ONE-Mobile-Title;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
 `;
